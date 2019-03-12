@@ -22,6 +22,7 @@ class App extends React.Component {
             searchUserText: '', 
             addMovieText: ''
         };
+        console.log(this)
         this.handleAddMovieChange = this.handleAddMovieChange.bind(this)
         this.handleAddMovieSubmit = this.handleAddMovieSubmit.bind(this)
         //can bind in constructor or below in render
@@ -30,7 +31,7 @@ class App extends React.Component {
       this.setState({searchUserText: event.target.value});
     }
     handleAddMovieChange(event) {
-      console.log(this)
+      //console.log(this)
       this.setState({addMovieText: event.target.value});
     }
     handleAddMovieSubmit(){
@@ -49,7 +50,7 @@ class App extends React.Component {
         results.push(currentMovie);
       } 
     }
-    if (results.length === 0) {
+    if (!results) {
       alert('Sorry, title not found')
       return this.setState({movies: movies}); 
     }
