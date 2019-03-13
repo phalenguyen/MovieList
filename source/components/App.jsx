@@ -45,7 +45,7 @@ handleSubmitSearch() {
     var currentMovie = this.state.movies[i];
     if (currentMovie.title.toLowerCase().includes(this.state.searchUserText.toLowerCase())) {
     results.push(currentMovie);
-    } 
+    }  
   }
   if (results.length === 0) {
     alert('Sorry, title not found')
