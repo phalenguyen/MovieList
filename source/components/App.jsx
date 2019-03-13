@@ -8,6 +8,8 @@ this.state = object always with key val pair
 more than 1 line of code use parentheses for jsx ex/. line 21
 movies can also write as movies: movies 
  // props what you pass in from the parent componement (index.js)
+//can bind in constructor or below in render
+
 */
 
 import movies from '../movieData.js';
@@ -15,44 +17,42 @@ import MovieList from './MovieList.js';
 import SearchBar from './SearchBar.js';
 import AddMovie from './AddMovie.js';
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            movies: movies,
-            searchUserText: '', 
-            addMovieText: ''
-        };
-        this.handleAddMovieChange = this.handleAddMovieChange.bind(this)
-        this.handleAddMovieSubmit = this.handleAddMovieSubmit.bind(this)
-        //can bind in constructor or below in render
-    }
-    handleChange(event) {
-      this.setState({searchUserText: event.target.value});
-    }
-    handleAddMovieChange(event) {
-      //console.log(this)
-      this.setState({addMovieText: event.target.value});
-    }
-    handleAddMovieSubmit(){
-      //state is currently null need to fix
-      var results = [];
-      results.push(this.state.addMovieText)
-      this.setState({movies: results})
-    }
-  handleSubmitSearch() {
-      var results = [];
-      for (var i = 0; i < this.state.movies.length; i++) {
-        var currentMovie = this.state.movies[i];
-      if (currentMovie.title.toLowerCase().includes(this.state.searchUserText.toLowerCase())) {
-        results.push(currentMovie);
-      } 
-    }
-    if (!results) {
-      alert('Sorry, title not found')
-      return this.setState({movies: movies}); 
-    }
-    this.setState({movies: results});
+  constructor(props) {
+  super(props);
+    this.state = {
+      movies: movies,
+      searchUserText: '', 
+      addMovieText: ''
+      };
+    this.handleAddMovieChange = this.handleAddMovieChange.bind(this)
+    this.handleAddMovieSubmit = this.handleAddMovieSubmit.bind(this)
+    this.baseState = this.state;
   }
+handleChange(event) {
+  this.setState({searchUserText: event.target.value});
+}
+handleAddMovieChange(event) {
+  this.setState({addMovieText: event.target.value});
+}
+handleAddMovieSubmit(){   //state is currently null need to fix
+  var results = [];
+  results.push(this.state.addMovieText)
+  this.setState({movies: results})
+}
+handleSubmitSearch() {
+  var results = [];
+  for (var i = 0; i < this.state.movies.length; i++) {
+    var currentMovie = this.state.movies[i];
+    if (currentMovie.title.toLowerCase().includes(this.state.searchUserText.toLowerCase())) {
+    results.push(currentMovie);
+    } 
+  }
+  if (!results) {
+    alert('Sorry, title not found')
+    return this.setState({movies: movies}); 
+    }
+  this.setState({movies: results});
+}
 /*
 set a variable for found movies
 if the text box value that the user submits is included in the movie list, return the list with the tittles matching
