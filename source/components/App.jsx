@@ -7,7 +7,7 @@ constructor/super - if you pass props inside construtor call, it passes it down 
 this.state = object always with key val pair
 more than 1 line of code use parentheses for jsx ex/. line 21
 movies can also write as movies: movies 
- 
+ // props what you pass in from the parent componement (index.js)
 */
 
 import movies from '../movieData.js';
@@ -15,7 +15,7 @@ import MovieList from './MovieList.js';
 import SearchBar from './SearchBar.js';
 import AddMovie from './AddMovie.js';
 class App extends React.Component {
-    constructor(props) {// props what you pass in from the parent componement (index.js)
+    constructor(props) {
         super(props);
         this.state = {
             movies: movies,
@@ -40,8 +40,6 @@ class App extends React.Component {
       this.setState({movies: results})
     }
   handleSubmitSearch() {
-    //console.log(this)
-
       var results = [];
       for (var i = 0; i < this.state.movies.length; i++) {
         var currentMovie = this.state.movies[i];
