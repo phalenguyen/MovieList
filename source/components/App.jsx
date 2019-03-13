@@ -47,11 +47,12 @@ handleSubmitSearch() {
     results.push(currentMovie);
     } 
   }
-  if (!results) {
+  if (results.length === 0) {
     alert('Sorry, title not found')
     return this.setState({movies: movies}); 
     }
   this.setState({movies: results});
+
 }
 /*
 set a variable for found movies
@@ -62,9 +63,9 @@ if the text box value that the user submits is included in the movie list, retur
         return (
             <div>
                 <h1>Movie List</h1>
-                <AddMovie addMovieText = {this.state.addMovieText} handleAddMovieSubmit = {this.handleAddMovieSubmit} handleAddMovieChange ={this.handleAddMovieChange}></AddMovie>
-                <SearchBar searchUserText = {this.state.searchUserText} handleSubmitSearch = {this.handleSubmitSearch.bind(this)} handleChange = {this.handleChange.bind(this)}/>
-                <MovieList movies = {this.state.movies}/>
+                {/* <AddMovie addMovieText = {this.state.addMovieText} handleAddMovieSubmit = {this.handleAddMovieSubmit} handleAddMovieChange ={this.handleAddMovieChange}></AddMovie> */}
+                <SearchBar searchUserText={this.state.searchUserText} handleSubmitSearch={this.handleSubmitSearch.bind(this)} handleChange={this.handleChange.bind(this)} />
+                <MovieList movies={this.state.movies}/>
             </div>
         )
     }
