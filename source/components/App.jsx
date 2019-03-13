@@ -22,7 +22,6 @@ class App extends React.Component {
             searchUserText: '', 
             addMovieText: ''
         };
-        console.log(this)
         this.handleAddMovieChange = this.handleAddMovieChange.bind(this)
         this.handleAddMovieSubmit = this.handleAddMovieSubmit.bind(this)
         //can bind in constructor or below in render
