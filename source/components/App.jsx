@@ -3,10 +3,10 @@
 where components start
 constructor sets up app with whatever props are passed down
 state goes inside constructor
-constructor/super - if you pass props inside construtor call, it passes it down to the next componenents 
+constructor/super - if you pass props inside construtor call, it passes it down
+to the next componenents
 this.state = object always with key val pair
 more than 1 line of code use parentheses for jsx ex/. line 21
-movies can also write as movies: movies 
  // props what you pass in from the parent componement (index.js)
 //can bind in constructor or below in render
 
@@ -28,17 +28,21 @@ class App extends React.Component {
     this.handleAddMovieSubmit = this.handleAddMovieSubmit.bind(this)
     this.baseState = this.state;
   }
+
 handleChange(event) {
   this.setState({searchUserText: event.target.value});
 }
+
 handleAddMovieChange(event) {
   this.setState({addMovieText: event.target.value});
 }
+
 handleAddMovieSubmit(){   //state is currently null need to fix
   var results = [];
   results.push(this.state.addMovieText)
   this.setState({movies: results})
 }
+
 handleSubmitSearch() {
   var results = [];
   for (var i = 0; i < this.state.movies.length; i++) {
