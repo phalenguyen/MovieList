@@ -16,11 +16,12 @@ import movies from '../movieData.js';
 import MovieList from './MovieList.js';
 import SearchBar from './SearchBar.js';
 import AddMovie from './AddMovie.js';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: movies,
+      movies,
       searchUserText: '',
       addMovieText: '',
     };
@@ -53,7 +54,7 @@ class App extends React.Component {
     }
     if (results.length === 0) {
       alert('Sorry, title not found');
-      return this.setState({ movies: movies }); 
+      return this.setState({ movies });
     }
     this.setState({ movies: results });
   }
@@ -61,16 +62,16 @@ class App extends React.Component {
 set a variable for found movies
 if the text box value that the user submits is included in the movie list, return the list with the tittles matching
 */
-  
+
   render() {
     return (
-            <div>
-                <h1>Movie List</h1>
-                {/* <AddMovie addMovieText = {this.state.addMovieText} handleAddMovieSubmit = {this.handleAddMovieSubmit} handleAddMovieChange ={this.handleAddMovieChange}></AddMovie> */}
-                <SearchBar searchUserText={this.state.searchUserText} handleSubmitSearch={this.handleSubmitSearch.bind(this)} handleChange={this.handleChange.bind(this)} />
-                <MovieList movies={this.state.movies}/>
-            </div>
-    )
+        <div>
+            <h1>Movie List</h1>
+            {/* <AddMovie addMovieText = {this.state.addMovieText} handleAddMovieSubmit = {this.handleAddMovieSubmit} handleAddMovieChange ={this.handleAddMovieChange}></AddMovie> */}
+            <SearchBar searchUserText={this.state.searchUserText} handleSubmitSearch={this.handleSubmitSearch.bind(this)} handleChange={this.handleChange.bind(this)} />
+            <MovieList movies={this.state.movies}/>
+        </div>
+    );
   }
 }
 
