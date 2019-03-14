@@ -18,61 +18,60 @@ import SearchBar from './SearchBar.js';
 import AddMovie from './AddMovie.js';
 class App extends React.Component {
   constructor(props) {
-  super(props);
+    super(props);
     this.state = {
       movies: movies,
-      searchUserText: '', 
-      addMovieText: ''
-      };
-    this.handleAddMovieChange = this.handleAddMovieChange.bind(this)
-    this.handleAddMovieSubmit = this.handleAddMovieSubmit.bind(this)
+      searchUserText: '',
+      addMovieText: '',
+    };
+    this.handleAddMovieChange = this.handleAddMovieChange.bind(this);
+    this.handleAddMovieSubmit = this.handleAddMovieSubmit.bind(this);
     this.baseState = this.state;
   }
 
-handleChange(event) {
-  this.setState({searchUserText: event.target.value});
-}
-
-handleAddMovieChange(event) {
-  this.setState({addMovieText: event.target.value});
-}
-
-handleAddMovieSubmit(){   //state is currently null need to fix
-  var results = [];
-  results.push(this.state.addMovieText)
-  this.setState({movies: results})
-}
-
-handleSubmitSearch() {
-  var results = [];
-  for (var i = 0; i < this.state.movies.length; i++) {
-    var currentMovie = this.state.movies[i];
-    if (currentMovie.title.toLowerCase().includes(this.state.searchUserText.toLowerCase())) {
-    results.push(currentMovie);
-    }  
+  handleChange(event) {
+    this.setState({ searchUserText: event.target.value });
   }
-  if (results.length === 0) {
-    alert('Sorry, title not found')
-    return this.setState({movies: movies}); 
-    }
-  this.setState({movies: results});
 
-}
-/*
+  handleAddMovieChange(event) {
+    this.setState({ addMovieText: event.target.value });
+  }
+
+  handleAddMovieSubmit() {   //state is currently null need to fix
+    var results = [];
+    results.push(this.state.addMovieText);
+    this.setState({ movies: results });
+  }
+
+  handleSubmitSearch() {
+    var results = [];
+    for (var i = 0; i < this.state.movies.length; i++) {
+      var currentMovie = this.state.movies[i];
+      if (currentMovie.title.toLowerCase().includes(this.state.searchUserText.toLowerCase())) {
+        results.push(currentMovie);
+      }  
+    }
+    if (results.length === 0) {
+      alert('Sorry, title not found');
+      return this.setState({ movies: movies }); 
+    }
+    this.setState({ movies: results });
+  }
+  /*
 set a variable for found movies
 if the text box value that the user submits is included in the movie list, return the list with the tittles matching
 */
   
-    render() {
-        return (
+  render() {
+    return (
             <div>
                 <h1>Movie List</h1>
                 {/* <AddMovie addMovieText = {this.state.addMovieText} handleAddMovieSubmit = {this.handleAddMovieSubmit} handleAddMovieChange ={this.handleAddMovieChange}></AddMovie> */}
                 <SearchBar searchUserText={this.state.searchUserText} handleSubmitSearch={this.handleSubmitSearch.bind(this)} handleChange={this.handleChange.bind(this)} />
                 <MovieList movies={this.state.movies}/>
             </div>
-        )
-    }
+    )
+  }
 }
 
 export default App;
