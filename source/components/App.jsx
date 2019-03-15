@@ -46,7 +46,7 @@ class App extends React.Component {
     results.push({title: this.state.addMovieText});
     this.setState({ movies: results });
     this.state.addMovieText = '';
-    //AddMovie
+    //AddMovie-clearform
     console.log(this.state.movies)
   }
 
