@@ -21,7 +21,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies,
+      movies: movies,
       searchUserText: '',
       addMovieText: '',
     };
@@ -38,19 +38,25 @@ class App extends React.Component {
     this.setState({ addMovieText: event.target.value });
   }
 
+  // addMovieText = 'good will hunting' 
+  // {title: 'mean girls'}
+
   handleAddMovieSubmit() {   //state is currently null need to fix
-    var results = [];
-    results.push(this.state.addMovieText);
+    var results = this.state.movies;
+    results.push({title: this.state.addMovieText});
     this.setState({ movies: results });
+    this.state.addMovieText = '';
+    //AddMovie
+    console.log(this.state.movies)
   }
 
   handleSubmitSearch() {
     var results = [];
-    for (var i = 0; i < this.state.movies.length; i++) {
+    for (var i = 0; i < this.state.movies.length; i += 1) {
       var currentMovie = this.state.movies[i];
       if (currentMovie.title.toLowerCase().includes(this.state.searchUserText.toLowerCase())) {
         results.push(currentMovie);
-      }  
+      }
     }
     if (results.length === 0) {
       alert('Sorry, title not found');
@@ -67,7 +73,7 @@ if the text box value that the user submits is included in the movie list, retur
     return (
         <div>
             <h1>Movie List</h1>
-            {/* <AddMovie addMovieText = {this.state.addMovieText} handleAddMovieSubmit = {this.handleAddMovieSubmit} handleAddMovieChange ={this.handleAddMovieChange}></AddMovie> */}
+            <AddMovie addMovieText = {this.state.addMovieText} handleAddMovieSubmit = {this.handleAddMovieSubmit} handleAddMovieChange ={this.handleAddMovieChange}></AddMovie>
             <SearchBar searchUserText={this.state.searchUserText} handleSubmitSearch={this.handleSubmitSearch.bind(this)} handleChange={this.handleChange.bind(this)} />
             <MovieList movies={this.state.movies}/>
         </div>

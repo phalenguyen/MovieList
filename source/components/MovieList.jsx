@@ -9,8 +9,8 @@ import movies from '../movieData.js'
 var MovieList = (props) => {
     return (
         <div>
-            {props.movies.map((movies, index) => {
-                return <div key={index}>{movies.title}</div>
+            {props.movies.map((movie, index) => {
+                return <div key={index}>{movie.title}</div>
             })}
         </div>
     )
