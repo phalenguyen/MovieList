@@ -62,9 +62,12 @@ class App extends React.Component {
     }
     if (results.length === 0) {
       alert('Sorry, title not found');
+      document.getElementById('SearchButtonVal').value = '';
       return this.setState({ movies });
     }
     this.setState({ movies: results });
+    document.getElementById('SearchButtonVal').value = '';
+
   }
   /*
 set a variable for found movies

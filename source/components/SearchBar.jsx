@@ -1,6 +1,6 @@
 let SearchBar = (props) => {
   return <div>
-    <input onChange={(event) => props.handleChange(event)} type='text' placeholder='Search...'></input>
+    <input id='SearchButtonVal' onChange={(event) => props.handleChange(event)} type='text' placeholder='Search...'></input>
     <button onClick={props.handleSubmitSearch}>Go!</button>
   </div>
 };
