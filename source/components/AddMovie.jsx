@@ -1,4 +1,4 @@
-var AddMovie = (props) => {
+let AddMovie = (props) => {
   return (
     <div>
     <input id='AddMovieButtonVal' onChange={(event) => props.handleAddMovieChange(event)} type='text' placeholder='Add movie title here'></input>

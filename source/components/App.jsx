@@ -77,6 +77,8 @@ if the text box value that the user submits is included in the movie list, retur
             <h1>Movie List</h1>
             <AddMovie addMovieText = {this.state.addMovieText} handleAddMovieSubmit = {this.handleAddMovieSubmit} handleAddMovieChange ={this.handleAddMovieChange}></AddMovie>
             <SearchBar searchUserText={this.state.searchUserText} handleSubmitSearch={this.handleSubmitSearch.bind(this)} handleChange={this.handleChange.bind(this)} />
+            <Watch>
+            <ToWatch></ToWatch>
             <MovieList movies={this.state.movies}/>
         </div>
     );

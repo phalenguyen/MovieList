@@ -3,21 +3,19 @@ import movies from '../movieData.js'
 // var MovieList = (props) => {
 //     return (
 //     <div>{props.movies[0].title}</div>
-//     ) props.movies calling the key in the app js page 
+//     ) props.movies calling the key in the app js page
 // } hardcode wiould only send backa set amount
-//props.movie is the whole array of movies, 
-var MovieList = (props) => {
-    return (
-        <div>
-            {props.movies.map((movie, index) => {
-                return <div key={index}>{movie.title}</div>
-            })}
-        </div>
-    )
-}
+// props.movie is the whole array of movies
 
-//TODO - change vscode tabs to 2 spaces
-
+const MovieList = (props) => {
+  return (
+      <div>
+         {props.movies.map((movie, index) => {
+           return <div key={index}>{movie.title}</div>;
+         })}
+      </div>
+  );
+};
 
 export default MovieList
 //proptypes = tells you what to expect for that specific field should return, extra precaution
