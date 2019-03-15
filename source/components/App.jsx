@@ -23,7 +23,7 @@ class App extends React.Component {
     this.state = {
       movies: movies,
       searchUserText: '',
-      addMovieText: '',
+      addMovieText: 'goodwill hunting',
     };
     this.handleAddMovieChange = this.handleAddMovieChange.bind(this);
     this.handleAddMovieSubmit = this.handleAddMovieSubmit.bind(this);
@@ -45,8 +45,10 @@ class App extends React.Component {
     var results = this.state.movies;
     results.push({title: this.state.addMovieText});
     this.setState({ movies: results });
-    this.state.addMovieText = '';
-    //AddMovie-clearform
+    // this.state.addMovieText = '';
+    //AddMovie-clearform;
+    document.getElementById('AddMovieButtonVal').value = '';
+    //$()
     console.log(this.state.movies)
   }
 
