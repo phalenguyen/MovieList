@@ -73,11 +73,6 @@ class App extends React.Component {
     document.getElementById('SearchButtonVal').value = '';
   }
 
-  /*
-set a variable for found movies
-if the text box value that the user submits is included in the movie list, return the list with the tittles matching
-*/
-
   render() {
     return (
       <div>
