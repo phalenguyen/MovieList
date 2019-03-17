@@ -1,4 +1,3 @@
-
 /*
 where components start
 constructor sets up app with whatever props are passed down
@@ -21,9 +20,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: movies,
+      movies,
       searchUserText: '',
-      addMovieText: 'goodwill hunting',
+      addMovieText: '',
     };
     this.handleAddMovieChange = this.handleAddMovieChange.bind(this);
     this.handleAddMovieSubmit = this.handleAddMovieSubmit.bind(this);
@@ -38,25 +37,30 @@ class App extends React.Component {
     this.setState({ addMovieText: event.target.value });
   }
 
-  // addMovieText = 'good will hunting' 
+  // addMovieText = 'good will hunting'
   // {title: 'mean girls'}
 
-  handleAddMovieSubmit() {   //state is currently null need to fix
-    var results = this.state.movies;
-    results.push({title: this.state.addMovieText});
+  handleAddMovieSubmit() {
+    // state is currently null need to fix
+    const results = this.state.movies;
+    results.push({ title: this.state.addMovieText });
     this.setState({ movies: results });
     // this.state.addMovieText = '';
-    //AddMovie-clearform;
+    // AddMovie-clearform;
     document.getElementById('AddMovieButtonVal').value = '';
-    //$()
-    console.log(this.state.movies)
+    // $()
+    console.log(this.state.movies);
   }
 
   handleSubmitSearch() {
-    var results = [];
-    for (var i = 0; i < this.state.movies.length; i += 1) {
-      var currentMovie = this.state.movies[i];
-      if (currentMovie.title.toLowerCase().includes(this.state.searchUserText.toLowerCase())) {
+    const results = [];
+    for (let i = 0; i < this.state.movies.length; i += 1) {
+      const currentMovie = this.state.movies[i];
+      if (
+        currentMovie.title
+          .toLowerCase()
+          .includes(this.state.searchUserText.toLowerCase())
+      ) {
         results.push(currentMovie);
       }
     }
@@ -67,8 +71,8 @@ class App extends React.Component {
     }
     this.setState({ movies: results });
     document.getElementById('SearchButtonVal').value = '';
-
   }
+
   /*
 set a variable for found movies
 if the text box value that the user submits is included in the movie list, return the list with the tittles matching
@@ -76,17 +80,25 @@ if the text box value that the user submits is included in the movie list, retur
 
   render() {
     return (
-        <div>
-            <h1>Movie List</h1>
-            <AddMovie addMovieText = {this.state.addMovieText} handleAddMovieSubmit = {this.handleAddMovieSubmit} handleAddMovieChange ={this.handleAddMovieChange}></AddMovie>
-            <SearchBar searchUserText={this.state.searchUserText} handleSubmitSearch={this.handleSubmitSearch.bind(this)} handleChange={this.handleChange.bind(this)} />
-            <Watch/>
-            <ToWatch></ToWatch>
-            <MovieList movies={this.state.movies}/>
-        </div>
+      <div>
+        <h1>Movie List</h1>
+        <AddMovie
+          addMovieText={this.state.addMovieText}
+          handleAddMovieSubmit={this.handleAddMovieSubmit}
+          handleAddMovieChange={this.handleAddMovieChange}
+        />
+        <SearchBar
+          searchUserText={this.state.searchUserText}
+          handleSubmitSearch={this.handleSubmitSearch.bind(this)}
+          handleChange={this.handleChange.bind(this)}
+        />
+        {/* <Watch/> */}
+        {/* <ToWatch></ToWatch> */}
+        <MovieList movies={this.state.movies} />
+      </div>
     );
   }
 }
 
 export default App;
-//if it is a method on this, then the search is the component, this is the app componement 
+// if it is a method on this, then the search is the component, this is the app componement

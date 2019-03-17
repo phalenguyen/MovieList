@@ -1,10 +1,18 @@
+let movies = [{
+  title: 'Mean Girls',
+},
+{
+  title: 'Hackers',
+},
+{
+  title: 'The Grey',
+},
+{
+  title: 'Sunshine',
+},
+{
+  title: 'Ex Machina',
+},
+];
 
-var movies = [
-    {title: 'Mean Girls'},
-    {title: 'Hackers'},
-    {title: 'The Grey'},
-    {title: 'Sunshine'},
-    {title: 'Ex Machina'},
-  ];
-
-  export default movies 
+export default movies;
