@@ -23,10 +23,32 @@ class App extends React.Component {
       movies,
       searchUserText: '',
       addMovieText: '',
+      isToggleOn: true,
     };
     this.handleAddMovieChange = this.handleAddMovieChange.bind(this);
     this.handleAddMovieSubmit = this.handleAddMovieSubmit.bind(this);
-    this.baseState = this.state;
+    this.handleWatchClick = this.handleWatchClick.bind(this);
+  }
+
+  handleAPI() {
+    $.get('https://api.themoviedb.org/3/search/movie', {
+      api_key: '2876f55117ee9e9fb74bcb3f8a36ad6b',
+      query: 'whales',
+    })
+      .done(({ data }) => {
+        console.log(data);
+        console.log('hi');
+      })
+      .fail((err) => {
+        console.log('faileddddd');
+      });
+  }
+
+  handleWatchClick() {
+    console.log(movie.watched);
+    console.log(this);
+    console.log(this.state.movies);
+    // this.setState({ movie.watched: !movie.watched }),
   }
 
   handleChange(event) {
@@ -37,18 +59,11 @@ class App extends React.Component {
     this.setState({ addMovieText: event.target.value });
   }
 
-  // addMovieText = 'good will hunting'
-  // {title: 'mean girls'}
-
   handleAddMovieSubmit() {
-    // state is currently null need to fix
     const results = this.state.movies;
-    results.push({ title: this.state.addMovieText });
+    results.push({ title: this.state.addMovieText, watched: false });
     this.setState({ movies: results });
-    // this.state.addMovieText = '';
-    // AddMovie-clearform;
     document.getElementById('AddMovieButtonVal').value = '';
-    // $()
     console.log(this.state.movies);
   }
 
@@ -77,6 +92,8 @@ class App extends React.Component {
     return (
       <div>
         <h1>Movie List</h1>
+        <button onClick={this.handleAPI}>Hello!</button>
+
         <AddMovie
           addMovieText={this.state.addMovieText}
           handleAddMovieSubmit={this.handleAddMovieSubmit}
@@ -87,9 +104,10 @@ class App extends React.Component {
           handleSubmitSearch={this.handleSubmitSearch.bind(this)}
           handleChange={this.handleChange.bind(this)}
         />
-        {/* <Watch/> */}
-        {/* <ToWatch></ToWatch> */}
-        <MovieList movies={this.state.movies} />
+        <MovieList
+          movies={this.state.movies}
+          handleWatchClick={this.handleWatchClick}
+        />
       </div>
     );
   }

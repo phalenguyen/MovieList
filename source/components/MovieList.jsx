@@ -1,8 +1,5 @@
 import MovieRow from './MovieRow.js';
 
-// var MovieList = (props) => {
-//     return (
-//     <div>{props.movies[0].title}</div>
 //     ) props.movies calling the key in the app js page
 // } hardcode wiould only send backa set amount
 // props.movie is the whole array of movies
@@ -10,7 +7,11 @@ import MovieRow from './MovieRow.js';
 const MovieList = props => (
   <div>
     {props.movies.map((movie, index) => (
-      <MovieRow key={index} movieTitle={movie.title} />
+      <MovieRow
+        key={index}
+        movieObject={movie}
+        handleWatchClick={props.handleWatchClick}
+      />
     ))}
   </div>
 );
